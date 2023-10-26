@@ -26,6 +26,7 @@ public class UI {
         okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         okno.getContentPane().setBackground(Color.black);
         okno.setLayout(null);
+        okno.setResizable(false);
         okno.setTitle("PuppyVille: Psia Ferajna");
         okno.setLocationRelativeTo(null);
     }
@@ -48,7 +49,6 @@ public class UI {
                     JOptionPane.showMessageDialog(null, "Imię nie może być puste. Wprowadź imię.");
                 }
             } else {
-                //return null;
                 JOptionPane.showMessageDialog(null, "Musisz wprowadzić imie!");
             }
         }
@@ -66,15 +66,7 @@ public class UI {
 
         label_tlo[0] = new JLabel();
         label_tlo[0].setBounds(0,0,1024,768);
-<<<<<<< Updated upstream
 
-        ImageIcon salon_zdj = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("salon.jpg")));
-        label_tlo[0].setIcon(salon_zdj);
-        panel_tlo[0].add(label_tlo[0]);
-
-
-
-=======
         ImageIcon salon_zdj = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("salon.jpg")));
         label_tlo[0].setIcon(salon_zdj);
         panel_tlo[0].add(label_tlo[0]);
@@ -92,6 +84,5 @@ public class UI {
 
         label_tlo[0].add(panel_tlo[1]);
         label_tlo[0].repaint();
->>>>>>> Stashed changes
     }
 }

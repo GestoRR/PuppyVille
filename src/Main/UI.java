@@ -16,8 +16,7 @@ public class UI {
         TworzenieOkna();
         okno.setVisible(true);
         wpisz_imie();
-        salon_tlo();
-        pole_imie();
+        tlo(0,"salon.jpg");
     }
 
     public void TworzenieOkna(){
@@ -56,33 +55,39 @@ public class UI {
 
 
 
-    public void salon_tlo(){
+    public void tlo(int NumerTla, String NazwaZdjecia){
         //Panel z tlem na cala strone. 0 = salon
-        panel_tlo[0] = new JPanel();
-        panel_tlo[0].setBounds(0,0,1024,768);
-        panel_tlo[0].setBackground(Color.red);
-        panel_tlo[0].setLayout(null);
-        okno.add(panel_tlo[0]);
+        panel_tlo[NumerTla] = new JPanel();
+        panel_tlo[NumerTla].setBounds(0,0,1024,768);
+        panel_tlo[NumerTla].setBackground(Color.red);
+        panel_tlo[NumerTla].setLayout(null);
+        okno.add(panel_tlo[NumerTla]);
 
-        label_tlo[0] = new JLabel();
-        label_tlo[0].setBounds(0,0,1024,768);
+        label_tlo[NumerTla] = new JLabel();
+        label_tlo[NumerTla].setBounds(0,0,1024,768);
 
-        ImageIcon salon_zdj = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("salon.jpg")));
-        label_tlo[0].setIcon(salon_zdj);
-        panel_tlo[0].add(label_tlo[0]);
-        //label_tlo[0].revalidate();
-        label_tlo[0].repaint();
+        ImageIcon salon_zdj = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(NazwaZdjecia)));
+        label_tlo[NumerTla].setIcon(salon_zdj);
+        panel_tlo[NumerTla].add(label_tlo[ NumerTla]);
+        label_tlo[NumerTla].repaint();
 
-    }
-
-    public void pole_imie()
-    {
         panel_tlo[1] = new JPanel();
-        panel_tlo[1].setBounds(1024/2-80,30,200,70);
-        panel_tlo[1].setBackground(Color.green);
+        panel_tlo[1].setBounds(1024/2-150,30,300,70);
+        panel_tlo[1].setBackground(null);
         panel_tlo[1].setLayout(null);
+        panel_tlo[1].setOpaque(false);
+        label_tlo[NumerTla].add(panel_tlo[1]);
+        label_tlo[NumerTla].repaint();
 
-        label_tlo[0].add(panel_tlo[1]);
-        label_tlo[0].repaint();
+        label_tlo[1] = new JLabel();
+        label_tlo[1].setBounds(0,0,300,70);
+        Font czcionka_do_imienia = new Font("Arial",Font.BOLD,48);
+        label_tlo[1].setFont(czcionka_do_imienia);
+        label_tlo[1].setHorizontalAlignment(JLabel.CENTER);
+        label_tlo[1].setText(imie);
+        label_tlo[1].setBackground(null);
+        panel_tlo[1].add(label_tlo[1]);
+
     }
+
 }

@@ -16,7 +16,7 @@ public class UI {
         TworzenieOkna();
         okno.setVisible(true);
         wpisz_imie();
-        tlo(0,"salon.jpg");
+        generuj_obraz();
     }
 
     public void TworzenieOkna(){
@@ -55,8 +55,8 @@ public class UI {
 
 
 
-    public void tlo(int NumerTla, String NazwaZdjecia){
-        //Panel z tlem na cala strone. 0 = salon
+    public void wstaw_tlo(int NumerTla, String NazwaZdjecia){
+        //Panel z tlem na cala strone
         panel_tlo[NumerTla] = new JPanel();
         panel_tlo[NumerTla].setBounds(0,0,1024,768);
         panel_tlo[NumerTla].setBackground(Color.red);
@@ -71,10 +71,9 @@ public class UI {
         panel_tlo[NumerTla].add(label_tlo[ NumerTla]);
         label_tlo[NumerTla].repaint();
 
+        //Wstawiam na stałe JLabel z imieniem na każdym tle jaki będzie
         panel_tlo[1] = new JPanel();
         panel_tlo[1].setBounds(1024/2-150,30,300,70);
-        panel_tlo[1].setBackground(null);
-        panel_tlo[1].setLayout(null);
         panel_tlo[1].setOpaque(false);
         label_tlo[NumerTla].add(panel_tlo[1]);
         label_tlo[NumerTla].repaint();
@@ -88,6 +87,15 @@ public class UI {
         label_tlo[1].setBackground(null);
         panel_tlo[1].add(label_tlo[1]);
 
+    }
+
+    public void wstaw_objekt(int NumerTla, String NazwaZdjecia){
+
+    }
+
+    public void generuj_obraz(){
+        wstaw_tlo(0,"salon.jpg");
+        wstaw_objekt(0,"xd");
     }
 
 }

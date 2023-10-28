@@ -3,6 +3,9 @@ package Main;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Objects;
 
 public class UI {
@@ -11,7 +14,8 @@ public class UI {
     public JPanel panel_tlo[] = new JPanel[10];
     public JLabel label_tlo[] = new JLabel[10];
     public String imie="Kokosik";
-    public String polozenie = "salon";
+    public String obecne_polozenie = "salon";
+    public String poprzednie_polozenie = "salon";
 
     public UI(Manager man){
         this.man = man;
@@ -78,7 +82,7 @@ public class UI {
 
     }
 
-    public void wstaw_objekt(int NumerTla, String NazwaZdjecia, int x, int y, int szer, int wys){
+    public void wstaw_objekt(int NumerTla, String NazwaZdjecia, int x, int y, int szer, int wys, Boolean funkcja){
         JLabel label_objekt = new JLabel();
         label_objekt.setBounds(x,y,szer,wys);
 
@@ -87,6 +91,27 @@ public class UI {
 
         label_tlo[NumerTla].add(label_objekt);
         label_tlo[NumerTla].repaint();
+        if (funkcja == Boolean.TRUE){
+        label_objekt.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (NumerTla == 0)//Wiem, że to jest salon
+                    {
+                        if (NazwaZdjecia.equals("kuchnia_ikona.png")){System.out.println("Salon, ikona:Kuchnia");}
+                        else if (NazwaZdjecia.equals("sypialnia_ikona.png")){System.out.println("Salon, ikonasypialnia");}
+                        else if (NazwaZdjecia.equals("dwor_ikona.png")){System.out.println("Salon, ikona:dwor");}
+                        else if (NazwaZdjecia.equals("lazienka_ikona.png")){System.out.println("Salon, ikona:lazienka");}
+                    }
+                else if (NumerTla == 1) //Wiem, że to kuchnia
+                {
+                    if (NazwaZdjecia.equals("kuchnia_ikona.png")){System.out.println("Kuchnia, ikona:Kuchnia");}
+                    else if (NazwaZdjecia.equals("sypialnia_ikona.png")){System.out.println("Kuchnia, ikona:sypialnia");}
+                    else if (NazwaZdjecia.equals("dwor_ikona.png")){System.out.println("Kuchnia, ikona:dwor");}
+                    else if (NazwaZdjecia.equals("lazienka_ikona.png")){System.out.println("Kuchnia, ikona:lazienka");}
+                }
+            }
+        });
+        }
 
     }
 
@@ -105,9 +130,6 @@ public class UI {
         label_imie.setHorizontalAlignment(JLabel.CENTER);
         label_imie.setText(imie);
         label_imie.setForeground(Color.white);
-        //label_imie.setBorder(new CompoundBorder( // sets two borders
-        //        BorderFactory.createMatteBorder(10, 10, 10, 10, Color.darkGray), // outer border
-        //        BorderFactory.createEmptyBorder(10, 10, 10, 10))); // inner invisible border as the margin
         label_imie.setBackground(Color.lightGray);
         label_imie.setOpaque(true);
         panel_imie.add(label_imie);
@@ -143,20 +165,20 @@ public class UI {
 
     public void salon(){
         wstaw_tlo(0,"salon.jpg");
-        wstaw_objekt(0,"bohater.png", 340, 320, 200,190);
-        wstaw_objekt(0,"dwor_ikona.png",806,648,70,70);
-        wstaw_objekt(0,"kuchnia_ikona.png",149,648,70,70);
-        wstaw_objekt(0,"lazienka_ikona.png",587,648,70,70);
-        wstaw_objekt(0,"sypialnia_ikona.png",368,648,70,70);
+        wstaw_objekt(0,"bohater.png", 340, 320, 200,190, Boolean.FALSE);
+        wstaw_objekt(0,"dwor_ikona.png",806,648,70,70, Boolean.TRUE);
+        wstaw_objekt(0,"kuchnia_ikona.png",149,648,70,70, Boolean.TRUE);
+        wstaw_objekt(0,"lazienka_ikona.png",587,648,70,70, Boolean.TRUE);
+        wstaw_objekt(0,"sypialnia_ikona.png",368,648,70,70, Boolean.TRUE);
     }
 
     public void kuchnia(){
         wstaw_tlo(1,"kuchnia.png");
-        wstaw_objekt(1,"bohater.png", 300, 450, 200,190);
-        wstaw_objekt(1,"dwor_ikona.png",806,648,70,70);
-        wstaw_objekt(1,"salon_ikona.png",149,648,70,70);
-        wstaw_objekt(1,"lazienka_ikona.png",587,648,70,70);
-        wstaw_objekt(1,"sypialnia_ikona.png",368,648,70,70);
+        wstaw_objekt(1,"bohater.png", 300, 450, 200,190, Boolean.FALSE);
+        wstaw_objekt(1,"dwor_ikona.png",806,648,70,70, Boolean.TRUE);
+        wstaw_objekt(1,"kuchnia_ikona.png",149,648,70,70, Boolean.TRUE);
+        wstaw_objekt(1,"lazienka_ikona.png",587,648,70,70, Boolean.TRUE);
+        wstaw_objekt(1,"sypialnia_ikona.png",368,648,70,70, Boolean.TRUE);
     }
     public void generuj_obraz(){
         //0 = salon, 1 = kuchnia

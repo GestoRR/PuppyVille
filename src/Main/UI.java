@@ -167,7 +167,17 @@ public class UI {
         label_ilosc_kredytow.setOpaque(true);
         label_tlo[NumerTla].add(label_ilosc_kredytow);
         label_tlo[NumerTla].repaint();
-
+        //JLabel z dodawaniem kredytow
+        JLabel label_dodawanie_kredytow = new JLabel("+");
+        Font czcionka_dodawanie = new Font("Arial",Font.BOLD,75);
+        label_dodawanie_kredytow.setFont(czcionka_dodawanie);
+        label_dodawanie_kredytow.setHorizontalAlignment(JLabel.CENTER);
+        label_dodawanie_kredytow.setBounds(890,30,70,70);
+        label_dodawanie_kredytow.setBackground(Color.gray);
+        label_dodawanie_kredytow.setForeground(Color.white);
+        label_dodawanie_kredytow.setOpaque(true);
+        label_tlo[NumerTla].add(label_dodawanie_kredytow);
+        label_tlo[NumerTla].repaint();
     }
 
     public void przechodzenie(int NumerTla, String NazwaZdjecia, JLabel label_objekt){

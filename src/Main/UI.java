@@ -16,6 +16,8 @@ public class UI {
     public JPanel panel_tlo[] = new JPanel[10];
     public JLabel label_tlo[] = new JLabel[10];
     private List<JLabel> label_ikony = new ArrayList<>();
+
+    public int ilosc_kredytow = 0;
     public String imie="Kokosik";
     public String obecne_polozenie = "salon";
     public String poprzednie_polozenie = "salon";
@@ -123,7 +125,7 @@ public class UI {
         label_imie.setHorizontalAlignment(JLabel.CENTER);
         label_imie.setText(imie);
         label_imie.setForeground(Color.white);
-        label_imie.setBackground(Color.lightGray);
+        label_imie.setBackground(Color.gray);
         label_imie.setOpaque(true);
         panel_imie.add(label_imie);
         //Ikona zdrowie
@@ -154,6 +156,18 @@ public class UI {
         label_objekt_szczescie.setIcon(objekt_zdj_szczescie);
         label_tlo[NumerTla].add(label_objekt_szczescie);
         label_tlo[NumerTla].repaint();
+        //JLabel z iloscia kredytow
+        JLabel label_ilosc_kredytow = new JLabel();
+        label_ilosc_kredytow.setBounds(750,30,100,70);
+        label_ilosc_kredytow.setFont(czcionka_do_imienia);
+        label_ilosc_kredytow.setHorizontalAlignment(JLabel.CENTER);
+        label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+        label_ilosc_kredytow.setForeground(Color.white);
+        label_ilosc_kredytow.setBackground(Color.gray);
+        label_ilosc_kredytow.setOpaque(true);
+        label_tlo[NumerTla].add(label_ilosc_kredytow);
+        label_tlo[NumerTla].repaint();
+
     }
 
     public void przechodzenie(int NumerTla, String NazwaZdjecia, JLabel label_objekt){

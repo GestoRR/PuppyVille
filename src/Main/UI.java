@@ -128,34 +128,17 @@ public class UI {
         label_imie.setBackground(Color.gray);
         label_imie.setOpaque(true);
         panel_imie.add(label_imie);
-        //Ikona zdrowie
-        JLabel label_zdrowie = new JLabel();
-        label_zdrowie.setBounds(10,10,70,70);
-        ImageIcon objekt_zdj_zdrowie = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("zdrowie_ikona.png")));
-        label_zdrowie.setIcon(objekt_zdj_zdrowie);
-        label_tlo[NumerTla].add(label_zdrowie);
-        label_tlo[NumerTla].repaint();
-        //Ikona glod
-        JLabel label_objekt_glod = new JLabel();
-        label_objekt_glod.setBounds(10,70,70,70);
-        ImageIcon objekt_zdj_glod = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("glod_ikona.png")));
-        label_objekt_glod.setIcon(objekt_zdj_glod);
-        label_tlo[NumerTla].add(label_objekt_glod);
-        label_tlo[NumerTla].repaint();
-        //Ikona zmeczenie
-        JLabel label_objekt_zmeczenie = new JLabel();
-        label_objekt_zmeczenie.setBounds(10,70+60,70,70);
-        ImageIcon objekt_zdj_zmeczenie = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("zmeczenie_ikona.png")));
-        label_objekt_zmeczenie.setIcon(objekt_zdj_zmeczenie);
-        label_tlo[NumerTla].add(label_objekt_zmeczenie);
-        label_tlo[NumerTla].repaint();
-        //Ikona szczescie
-        JLabel label_objekt_szczescie = new JLabel();
-        label_objekt_szczescie.setBounds(10,70+120,70,70);
-        ImageIcon objekt_zdj_szczescie = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("szczescie_ikona.png")));
-        label_objekt_szczescie.setIcon(objekt_zdj_szczescie);
-        label_tlo[NumerTla].add(label_objekt_szczescie);
-        label_tlo[NumerTla].repaint();
+
+        String[] ikony = {"zdrowie_ikona.png", "glod_ikona.png", "zmeczenie_ikona.png", "szczescie_ikona.png"};
+        for (int i = 0; i < ikony.length; i++) {
+            JLabel label_objekt = new JLabel();
+            label_objekt.setBounds(10, 10 + i * 60, 70, 70);
+            ImageIcon objekt_zdjecie = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(ikony[i])));
+            label_objekt.setIcon(objekt_zdjecie);
+            label_tlo[NumerTla].add(label_objekt);
+            label_tlo[NumerTla].repaint();
+        }
+
         //JLabel z iloscia kredytow
         JLabel label_ilosc_kredytow = new JLabel();
         label_ilosc_kredytow.setBounds(750,30,100,70);

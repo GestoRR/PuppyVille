@@ -161,6 +161,8 @@ public class UI {
         label_dodawanie_kredytow.setOpaque(true);
         label_tlo[NumerTla].add(label_dodawanie_kredytow);
         label_tlo[NumerTla].repaint();
+
+        dodawanie_kredytow dodawanieKredytow = new dodawanie_kredytow(label_dodawanie_kredytow);
     }
 
     public void przechodzenie(int NumerTla, String NazwaZdjecia, JLabel label_objekt){

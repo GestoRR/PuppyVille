@@ -100,12 +100,12 @@ public class UI {
 
         if (ikona == Boolean.TRUE){
             label_ikony.add(label_objekt);
-        label_objekt.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                przechodzenie(NumerTla,NazwaZdjecia,label_objekt);
-            }
-        });
+            label_objekt.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    przechodzenie(NumerTla,NazwaZdjecia,label_objekt);
+                }
+            });
         }
 
     }

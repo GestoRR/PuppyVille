@@ -152,11 +152,11 @@ public class dodawanie_kredytow {
                     zadanieLabel = new JLabel(odpowiedzi[0]+String.valueOf(znak1)+odpowiedzi[1]+String.valueOf(znak2)+odpowiedzi[2]);
                     poprawnaOdpowiedz = String.valueOf(odpowiedzi[5]);
                 } else if (kategoria.equals("Tłumaczenie")) {
-                    String[] odpowiedzi = TlumaczenieLatwe();
-                    zadanieLabel = new JLabel("Translate '"+odpowiedzi[0]+"' to Polish:");
+                    String[] odpowiedzi = TlumaczenieTrudne();
+                    zadanieLabel = new JLabel("Przetlumacz '"+odpowiedzi[0]+"' na Angielski:");
                     poprawnaOdpowiedz = odpowiedzi[1];
                 } else {
-                    String[] odpowiedzi = ZagadkiLatwe();
+                    String[] odpowiedzi = ZagadkiTrudne();
                     zadanieLabel = new JLabel(odpowiedzi[0]);
                     poprawnaOdpowiedz = odpowiedzi[1];
                 }
@@ -240,8 +240,7 @@ public class dodawanie_kredytow {
         String slowoDoTlumaczenia = slowaAngielskie.get(indeks);
         String poprawneTlumaczenie = slownik.get(slowoDoTlumaczenia);
 
-        String[] wynik = {slowoDoTlumaczenia,poprawneTlumaczenie};
-        return wynik;
+        return new String[]{slowoDoTlumaczenia,poprawneTlumaczenie};
 
 
     }
@@ -263,8 +262,7 @@ public class dodawanie_kredytow {
         String zagadkiDoWyswietlenia = zagadkiWyswietlanie.get(indeks);
         String rozwiazanieZagadki = zagadki.get(zagadkiDoWyswietlenia);
 
-        String[] wynik = {zagadkiDoWyswietlenia,rozwiazanieZagadki};
-        return wynik;
+        return new String[]{zagadkiDoWyswietlenia,rozwiazanieZagadki};
 
 
     }
@@ -311,12 +309,12 @@ public class dodawanie_kredytow {
         int odp = 0;
 
         if (znak2!='*'){
-        if (znak1 == '+') {
-            odp = a + b;
-        } else if (znak1 == '-') {
-            odp = a - b;
-        } else if (znak1 == '*') {
-            odp = a * b;}
+            if (znak1 == '+') {
+                odp = a + b;
+            } else if (znak1 == '-') {
+                odp = a - b;
+            } else if (znak1 == '*') {
+                odp = a * b;}
 
             if (znak2=='+'){
                 odp = odp+c;
@@ -340,13 +338,66 @@ public class dodawanie_kredytow {
         }
 
 
+        return new int[]{a,b,c, znak1, znak2,odp};
+    }
 
-        int[] wynik = {a,b,c, znak1, znak2,odp};
-        return wynik;
+    private String[] TlumaczenieTrudne() {
+        //Tworzymy słownik w postaci hashmapy
+        Map<String, String> slownik = new HashMap<>();
+        slownik.put("bielizna", "lingerie");
+        slownik.put("ekstrawagancja", "extravagance");
+        slownik.put("konsekwentny", "consistent");
+        slownik.put("kwintesencja", "quintessence");
+        slownik.put("rozważny", "prudent");
+        slownik.put("rozprzestrzenianie", "propagation");
+        slownik.put("sporadyczny", "sporadic");
+        slownik.put("antagonizm", "antagonism");
+        slownik.put("arogancki", "arrogant");
+        slownik.put("definicja", "definition");
+        slownik.put("egzemplarz", "specimen");
+        slownik.put("inspiracja", "inspiration");
+        slownik.put("manipulacja", "manipulation");
+        slownik.put("odzwierciedlenie", "reflection");
+        slownik.put("okrutny", "cruel");
+        slownik.put("subtelność", "subtlety");
+        slownik.put("złożoność", "complexity");
+
+        //Lista słów polskich
+        List<String> slowaPolskie = new ArrayList<>(slownik.keySet());
+
+        //Losowe słowo do tłumaczenia
+        int indeks = ThreadLocalRandom.current().nextInt(slowaPolskie.size());
+        String slowoDoTlumaczenia = slowaPolskie.get(indeks);
+        String poprawneTlumaczenie = slownik.get(slowoDoTlumaczenia);
+
+        return new String[]{slowoDoTlumaczenia,poprawneTlumaczenie};
+
+
+    }
+
+    private String[] ZagadkiTrudne() {
+        //Tworzymy zagadki i odpowiedzi w postaci hashmapy
+        Map<String, String> zagadki = new HashMap<>();
+        zagadki.put("I'm full of keys, but I can't open any locks. What am I?", "A piano");
+        zagadki.put("I'm a place where you can find stories and knowledge bound in sheets. What am I?", "A library");
+        zagadki.put("I'm a fiery ball in the sky, bringing light and warmth to the world. What am I?", "The sun");
+        zagadki.put("I'm a source of energy, but I'm stored in a small, portable container. What am I?", "A battery");
+        zagadki.put("I have hands but can't clap, a face but can't smile. What am I?", "A clock");
+
+
+        //Lista zagadek
+        List<String> zagadkiWyswietlanie = new ArrayList<>(zagadki.keySet());
+
+        //Losowa zagadka
+        int indeks = ThreadLocalRandom.current().nextInt(zagadkiWyswietlanie.size());
+        String zagadkiDoWyswietlenia = zagadkiWyswietlanie.get(indeks);
+        String rozwiazanieZagadki = zagadki.get(zagadkiDoWyswietlenia);
+
+        return new String[]{zagadkiDoWyswietlenia,rozwiazanieZagadki};
+
+
     }
 
 
 
 }
-
-

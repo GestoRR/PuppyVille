@@ -13,12 +13,9 @@ import java.util.Objects;
 public class UI {
     Manager man;
     JFrame okno;
-    public JPanel panel_tlo[] = new JPanel[10];
-    public JLabel label_tlo[] = new JLabel[10];
-    private List<JLabel> label_ikony = new ArrayList<>();
+    public static PrzechowywanieZmiennych przechowywanie = new PrzechowywanieZmiennych();
 
-    public int ilosc_kredytow = 0;
-    public String imie="Kokosik";
+
     public String obecne_polozenie = "salon";
     public String poprzednie_polozenie = "salon";
 
@@ -52,9 +49,9 @@ public class UI {
             int result = JOptionPane.showConfirmDialog(null, panel, "Wprowadź imię", JOptionPane.OK_CANCEL_OPTION);
 
             if (result == JOptionPane.OK_OPTION) {
-                imie = textField.getText();
-                if (!imie.isEmpty()) {
-                    return imie;
+                przechowywanie.imie = textField.getText();
+                if (!przechowywanie.imie.isEmpty()) {
+                    return przechowywanie.imie;
                 } else {
                     JOptionPane.showMessageDialog(null, "Imię nie może być puste. Wprowadź imię.");
                 }
@@ -68,19 +65,19 @@ public class UI {
 
     public void wstaw_tlo(int NumerTla, String NazwaZdjecia){
         //Panel z tlem na cala strone
-        panel_tlo[NumerTla] = new JPanel();
-        panel_tlo[NumerTla].setBounds(0,0,1024,768);
-        panel_tlo[NumerTla].setBackground(Color.red);
-        panel_tlo[NumerTla].setLayout(null);
-        okno.add(panel_tlo[NumerTla]);
+        przechowywanie.panel_tlo[NumerTla] = new JPanel();
+        przechowywanie.panel_tlo[NumerTla].setBounds(0,0,1024,768);
+        przechowywanie.panel_tlo[NumerTla].setBackground(Color.red);
+        przechowywanie.panel_tlo[NumerTla].setLayout(null);
+        okno.add(przechowywanie.panel_tlo[NumerTla]);
 
-        label_tlo[NumerTla] = new JLabel();
-        label_tlo[NumerTla].setBounds(0,0,1024,768);
+        przechowywanie.label_tlo[NumerTla] = new JLabel();
+        przechowywanie.label_tlo[NumerTla].setBounds(0,0,1024,768);
 
         ImageIcon tlo_zdj = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(NazwaZdjecia)));
-        label_tlo[NumerTla].setIcon(tlo_zdj);
-        panel_tlo[NumerTla].add(label_tlo[ NumerTla]);
-        label_tlo[NumerTla].repaint();
+        przechowywanie.label_tlo[NumerTla].setIcon(tlo_zdj);
+        przechowywanie.panel_tlo[NumerTla].add(przechowywanie.label_tlo[ NumerTla]);
+        przechowywanie.label_tlo[NumerTla].repaint();
 
         //Wywołuje metode, która wstawia obiekty, które są zawsze w tym samym miejscu i są takie same
         stale_obiekty(NumerTla);
@@ -94,12 +91,12 @@ public class UI {
         ImageIcon objekt_zdj = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(NazwaZdjecia)));
         label_objekt.setIcon(objekt_zdj);
 
-        label_tlo[NumerTla].add(label_objekt);
-        label_tlo[NumerTla].repaint();
+        przechowywanie.label_tlo[NumerTla].add(label_objekt);
+        przechowywanie.label_tlo[NumerTla].repaint();
 
 
         if (ikona == Boolean.TRUE){
-            label_ikony.add(label_objekt);
+            przechowywanie.label_ikony.add(label_objekt);
             label_objekt.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
@@ -114,16 +111,18 @@ public class UI {
         //Wstawiam na stałe JLabel z imieniem na każdym tle jaki wystąpi
         JPanel panel_imie = new JPanel();
         panel_imie.setBounds(1024/2-150,30,300,70);
-        panel_imie.setOpaque(false);
-        label_tlo[NumerTla].add(panel_imie);
-        label_tlo[NumerTla].repaint();
+        panel_imie.setLayout(null);
+        panel_imie.setOpaque(true);
+        panel_imie.setBackground(Color.red);
+        przechowywanie.label_tlo[NumerTla].add(panel_imie);
+        przechowywanie.label_tlo[NumerTla].repaint();
 
         JLabel label_imie = new JLabel();
         label_imie.setBounds(0,0,300,70);
         Font czcionka_do_imienia = new Font("Arial",Font.BOLD,48);
         label_imie.setFont(czcionka_do_imienia);
         label_imie.setHorizontalAlignment(JLabel.CENTER);
-        label_imie.setText(imie);
+        label_imie.setText(przechowywanie.imie);
         label_imie.setForeground(Color.white);
         label_imie.setBackground(Color.gray);
         label_imie.setOpaque(true);
@@ -133,23 +132,23 @@ public class UI {
         for (int i = 0; i < ikony.length; i++) {
             JLabel label_objekt = new JLabel();
             label_objekt.setBounds(10, 10 + i * 60, 70, 70);
-            ImageIcon objekt_zdjecie = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(ikony[i])));
+            ImageIcon objekt_zdjecie = new ImageIcon(Objects.requireNonNull(UI.class.getClassLoader().getResource(ikony[i])));
             label_objekt.setIcon(objekt_zdjecie);
-            label_tlo[NumerTla].add(label_objekt);
-            label_tlo[NumerTla].repaint();
+            przechowywanie.label_tlo[NumerTla].add(label_objekt);
+            przechowywanie.label_tlo[NumerTla].repaint();
         }
 
         //JLabel z iloscia kredytow
-        JLabel label_ilosc_kredytow = new JLabel();
-        label_ilosc_kredytow.setBounds(750,30,100,70);
-        label_ilosc_kredytow.setFont(czcionka_do_imienia);
-        label_ilosc_kredytow.setHorizontalAlignment(JLabel.CENTER);
-        label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
-        label_ilosc_kredytow.setForeground(Color.white);
-        label_ilosc_kredytow.setBackground(Color.gray);
-        label_ilosc_kredytow.setOpaque(true);
-        label_tlo[NumerTla].add(label_ilosc_kredytow);
-        label_tlo[NumerTla].repaint();
+        przechowywanie.label_ilosc_kredytow = new JLabel();
+        przechowywanie.label_ilosc_kredytow.setBounds(750,30,100,70);
+        przechowywanie.label_ilosc_kredytow.setFont(czcionka_do_imienia);
+        przechowywanie.label_ilosc_kredytow.setHorizontalAlignment(JLabel.CENTER);
+        przechowywanie.label_ilosc_kredytow.setText(String.valueOf(przechowywanie.ilosc_kredytow));
+        przechowywanie.label_ilosc_kredytow.setForeground(Color.white);
+        przechowywanie.label_ilosc_kredytow.setBackground(Color.gray);
+        przechowywanie.label_ilosc_kredytow.setOpaque(true);
+        przechowywanie.label_tlo[NumerTla].add(przechowywanie.label_ilosc_kredytow);
+        przechowywanie.label_tlo[NumerTla].repaint();
         //JLabel z dodawaniem kredytow
         JLabel label_dodawanie_kredytow = new JLabel("+");
         Font czcionka_dodawanie = new Font("Arial",Font.BOLD,75);
@@ -159,17 +158,18 @@ public class UI {
         label_dodawanie_kredytow.setBackground(Color.gray);
         label_dodawanie_kredytow.setForeground(Color.white);
         label_dodawanie_kredytow.setOpaque(true);
-        label_tlo[NumerTla].add(label_dodawanie_kredytow);
-        label_tlo[NumerTla].repaint();
+        przechowywanie.label_tlo[NumerTla].add(label_dodawanie_kredytow);
+        przechowywanie.label_tlo[NumerTla].repaint();
+
 
         dodawanie_kredytow dodawanieKredytow = new dodawanie_kredytow(label_dodawanie_kredytow);
     }
 
     public void przechodzenie(int NumerTla, String NazwaZdjecia, JLabel label_objekt){
 
-        for (int i = 0 ; i<label_ikony.size();i++)
+        for (int i = 0 ; i<przechowywanie.label_ikony.size();i++)
         {
-            label_tlo[NumerTla].remove(label_ikony.get(i));
+            przechowywanie.label_tlo[NumerTla].remove(przechowywanie.label_ikony.get(i));
         }
 
 

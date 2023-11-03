@@ -12,6 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class dodawanie_kredytow {
     private JLabel label_dodawanie_kredytow;
+    //private PrzechowywanieZmiennych przechowywanie = new PrzechowywanieZmiennych();
 
     public dodawanie_kredytow(JLabel label_dodawanie_kredytow) {
         this.label_dodawanie_kredytow = label_dodawanie_kredytow;
@@ -116,10 +117,11 @@ public class dodawanie_kredytow {
                         if (odpowiedzUzytkownika.equalsIgnoreCase(poprawnaOdpowiedz)) {
                             // Poprawna odpowiedz
                             JOptionPane.showMessageDialog(null, "Super, poprawna odpowiedz! Dostajesz 1 kredyt :)!");
-
+                            UI.przechowywanie.dodajPunkt(1,'+');
                         } else {
                             // Niepoprawna odpowiedz
                             JOptionPane.showMessageDialog(null, "Odpowiedź niepoprawna. Tracisz 1 kredyt :(");
+                            UI.przechowywanie.dodajPunkt(1,'-');
                         }
                         zadanieFrame.dispose();
                     }
@@ -185,10 +187,12 @@ public class dodawanie_kredytow {
                         if (odpowiedzUzytkownika.equalsIgnoreCase(poprawnaOdpowiedz)) {
                             //Poprawna odpowiedz
                             JOptionPane.showMessageDialog(null, "Super, poprawna odpowiedz! Dostajesz 3 kredyty :)!");
+                            UI.przechowywanie.dodajPunkt(3,'+');
 
                         } else {
                             //Niepoprawna odpowiedz
                             JOptionPane.showMessageDialog(null, "Odpowiedź niepoprawna. Tracisz 3 kredyty :(");
+                            UI.przechowywanie.dodajPunkt(3,'-');
                         }
                         zadanieFrame.dispose();
                     }

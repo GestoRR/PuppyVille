@@ -134,6 +134,17 @@ public class UI {
             label_objekt.setBounds(10, 10 + i * 60, 70, 70);
             ImageIcon objekt_zdjecie = new ImageIcon(Objects.requireNonNull(UI.class.getClassLoader().getResource(ikony[i])));
             label_objekt.setIcon(objekt_zdjecie);
+            przechowywanie.label_punkty_vitalne[i] = new JLabel();
+            przechowywanie.label_punkty_vitalne[i].setBounds(60,20 + i*60,70,50);
+            przechowywanie.label_punkty_vitalne[i].setFont(new Font("Arial", Font.BOLD,26));
+            przechowywanie.label_punkty_vitalne[i].setHorizontalAlignment(SwingConstants.CENTER);
+            przechowywanie.label_punkty_vitalne[i].setText(String.valueOf(przechowywanie.ilosc_punkty_vitalne[i]+"%"));
+            przechowywanie.label_punkty_vitalne[i].setBackground(Color.getHSBColor(272f/360f, 60f/100f, 82f/100f));
+            if (przechowywanie.ilosc_punkty_vitalne[i]>=70) {przechowywanie.label_punkty_vitalne[i].setForeground(Color.green);}
+            else if (przechowywanie.ilosc_punkty_vitalne[i]<70&przechowywanie.ilosc_punkty_vitalne[i]>=30) {przechowywanie.label_punkty_vitalne[i].setForeground(Color.yellow);}
+            else if (przechowywanie.ilosc_punkty_vitalne[i]<30) {przechowywanie.label_punkty_vitalne[i].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
+            przechowywanie.label_punkty_vitalne[i].setOpaque(true);
+            przechowywanie.label_tlo[NumerTla].add(przechowywanie.label_punkty_vitalne[i]);
             przechowywanie.label_tlo[NumerTla].add(label_objekt);
             przechowywanie.label_tlo[NumerTla].repaint();
         }

@@ -14,7 +14,7 @@ public class UI {
     Manager man;
     JFrame okno;
     public static PrzechowywanieZmiennych przechowywanie = new PrzechowywanieZmiennych();
-
+    public static TimerKlasa timer = new TimerKlasa();
 
     public String obecne_polozenie = "salon";
     public String poprzednie_polozenie = "salon";
@@ -25,6 +25,7 @@ public class UI {
         okno.setVisible(true);
         //wpisz_imie();
         generuj_obraz();
+        timer.startTimer();
     }
 
     public void TworzenieOkna(){

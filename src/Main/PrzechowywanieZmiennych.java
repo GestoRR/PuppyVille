@@ -30,7 +30,7 @@ public class PrzechowywanieZmiennych {
 
     public void inicjalizujPunktyVitalne() {
         for (int i = 0; i < ilosc_punkty_vitalne.length; i++) {
-            ilosc_punkty_vitalne[i] = 99;
+            ilosc_punkty_vitalne[i] = 100;
         }
     }
 }

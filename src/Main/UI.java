@@ -14,6 +14,7 @@ public class UI {
     Manager man;
     JFrame okno;
     public static PrzechowywanieZmiennych przechowywanie = new PrzechowywanieZmiennych();
+    public Menu menu = new Menu();
     public static TimerKlasa timer = new TimerKlasa();
 
     public String obecne_polozenie = "salon";
@@ -26,6 +27,7 @@ public class UI {
         //wpisz_imie();
         generuj_obraz();
         timer.startTimer();
+        menu.Menu();
     }
 
     public void TworzenieOkna(){

@@ -11,12 +11,12 @@ public class TimerKlasa {
     }
 
     public void startTimer() {
-        long delay = 2 * 60 * 1000; //2 minuty (120 000 milisekund)
+        long delay = 5 * 1000; //5 sekund (120 000 milisekund)
 
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                zadanieTimera(); //Metoda wykona się po 2 minutach (odjecie punktow vitalnych)
+                zadanieTimera(); //Metoda wykona się po 5 sekundach (odjecie punktow vitalnych)
             }
         };
 

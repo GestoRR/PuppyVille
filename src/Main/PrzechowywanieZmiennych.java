@@ -14,6 +14,7 @@ public class PrzechowywanieZmiennych {
     public JLabel[] label_tlo = new JLabel[10];
     public JLabel[] label_punkty_vitalne = new JLabel[4];
     public int[] ilosc_punkty_vitalne = new int[4];
+    public JButton[] przycisk_interakcje = new JButton[5];
 
     public PrzechowywanieZmiennych(){
         inicjalizujPunktyVitalne();

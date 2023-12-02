@@ -3,6 +3,7 @@ package Main;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -65,7 +66,30 @@ public class UI {
     }
 
 
+    public void wstaw_przycisk(int NumerTla, int x, int y, int szer, int wys){
+        przechowywanie.przycisk_interakcje[NumerTla] = new JButton();
+        JButton przyc =  przechowywanie.przycisk_interakcje[NumerTla];
+        JPanel tlo = przechowywanie.panel_tlo[NumerTla];
+        if (poprzednie_polozenie.equals("kuchnia")){przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
+        if (poprzednie_polozenie.equals("dwor")){przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
+        if (poprzednie_polozenie.equals("lazienka")){przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
+        if (poprzednie_polozenie.equals("sypialnia")){przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
+        przyc.setBounds(x,y,szer,wys);
+        tlo.add(przyc);
+        przyc.setOpaque(false); //Przycisk jest przezroczysty
+        przyc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (NumerTla){
+                    case 1 -> {System.out.println("KUCBNIA");}
+                    case 2 -> {System.out.println("DWOR");}
+                    case 3 -> {System.out.println("LAZIENKA");}
+                    case 4 -> {System.out.println("SYPIALNIA");}
+                }
+            }
+        });
 
+    }
     public void wstaw_tlo(int NumerTla, String NazwaZdjecia){
         //Panel z tlem na cala strone
         przechowywanie.panel_tlo[NumerTla] = new JPanel();
@@ -346,7 +370,7 @@ public class UI {
     public void kuchnia(){
         wstaw_tlo(1,"kuchnia.png");
         wstaw_objekt(1,"bohater.png", 300, 450, 200,190, Boolean.FALSE);
-
+        wstaw_przycisk(1,3,150,195,359);
         switch (poprzednie_polozenie){
             case "salon", "dwor", "sypialnia", "lazienka" -> {
                 wstaw_objekt(1,"dwor_ikona.png",806,648,70,70, Boolean.TRUE);
@@ -361,7 +385,8 @@ public class UI {
     public void dwor(){
         wstaw_tlo(2,"dwor.png");
         wstaw_objekt(2,"bohater.png", 400, 530, 200,190, Boolean.FALSE);
-
+        wstaw_objekt(2,"pilka.png", 30, 600, 100,100, Boolean.FALSE);
+        wstaw_przycisk(2,30,600,80,100);
         switch (poprzednie_polozenie){
             case "salon", "kuchnia", "sypialnia", "lazienka" -> {
                 wstaw_objekt(2,"salon_ikona.png",806,648,70,70, Boolean.TRUE);
@@ -375,6 +400,7 @@ public class UI {
     public void lazienka(){
         wstaw_tlo(3,"lazienka.png");
         wstaw_objekt(3,"bohater.png", 500, 470, 200,190, Boolean.FALSE);
+        wstaw_przycisk(3,662,485,325,150);
 
         switch (poprzednie_polozenie){
             case "salon", "kuchnia", "sypialnia", "dwor" -> {
@@ -389,7 +415,7 @@ public class UI {
     public void sypialnia(){
         wstaw_tlo(4,"sypialnia.png");
         wstaw_objekt(4,"bohater.png", 830, 480, 200,190, Boolean.FALSE);
-
+        wstaw_przycisk(4,350,420,265,200);
         switch (poprzednie_polozenie){
             case "salon", "kuchnia", "dwor", "lazienka" -> {
                 wstaw_objekt(4,"dwor_ikona.png",806,648,70,70, Boolean.TRUE);

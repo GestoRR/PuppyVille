@@ -81,10 +81,10 @@ public class UI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (NumerTla){
-                    case 1 -> {System.out.println("KUCBNIA");}
-                    case 2 -> {System.out.println("DWOR");}
-                    case 3 -> {System.out.println("LAZIENKA");}
-                    case 4 -> {System.out.println("SYPIALNIA");}
+                    case 1 -> {przechowywanie.obslugaInterakcj(1);}
+                    case 2 -> {przechowywanie.obslugaInterakcj(2);}
+                    case 3 -> {przechowywanie.obslugaInterakcj(3);}
+                    case 4 -> {przechowywanie.obslugaInterakcj(4);}
                 }
             }
         });

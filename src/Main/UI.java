@@ -15,6 +15,7 @@ public class UI {
     public Menu menu = new Menu();
     public static TimerKlasa timer = new TimerKlasa();
 
+
     public String obecne_polozenie = "salon";
     public String poprzednie_polozenie = "salon";
 

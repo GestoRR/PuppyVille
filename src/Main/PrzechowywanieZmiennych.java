@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrzechowywanieZmiennych {
-    public int ilosc_kredytow;
+    public int ilosc_kredytow=999;
     public JLabel label_ilosc_kredytow;
     public List<JLabel> label_ikony = new ArrayList<>();
     public String imie = "Kokosik";
@@ -37,7 +37,7 @@ public class PrzechowywanieZmiennych {
         }
     }
 
-    public void obslugaInterakcj(int numerTla){
+    public void obslugaInterakcji(int numerTla){
         JFrame interakcja = new JFrame();
         interakcja.setResizable(false);
         String string1 = null;
@@ -89,6 +89,9 @@ public class PrzechowywanieZmiennych {
                             }
                             ilosc_kredytow-=3;
                             label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            if (UI.przechowywanie.ilosc_punkty_vitalne[1]>=70) {UI.przechowywanie.label_punkty_vitalne[1].setForeground(Color.green);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[1]<70&UI.przechowywanie.ilosc_punkty_vitalne[1]>=30) {UI.przechowywanie.label_punkty_vitalne[1].setForeground(Color.yellow);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[1]<30) {UI.przechowywanie.label_punkty_vitalne[1].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
                             label_punkty_vitalne[1].setText(String.valueOf(ilosc_punkty_vitalne[1] + "%"));
                         }
                         break;
@@ -104,6 +107,9 @@ public class PrzechowywanieZmiennych {
                             }
                             ilosc_kredytow-=3;
                             label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            if (UI.przechowywanie.ilosc_punkty_vitalne[3]>=70) {UI.przechowywanie.label_punkty_vitalne[3].setForeground(Color.green);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[3]<70&UI.przechowywanie.ilosc_punkty_vitalne[3]>=30) {UI.przechowywanie.label_punkty_vitalne[3].setForeground(Color.yellow);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[3]<30) {UI.przechowywanie.label_punkty_vitalne[3].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
                             label_punkty_vitalne[3].setText(String.valueOf(ilosc_punkty_vitalne[3] + "%"));
                         }
                         break;
@@ -118,6 +124,9 @@ public class PrzechowywanieZmiennych {
                             }
                             ilosc_kredytow-=3;
                             label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            if (UI.przechowywanie.ilosc_punkty_vitalne[0]>=70) {UI.przechowywanie.label_punkty_vitalne[0].setForeground(Color.green);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[0]<70&UI.przechowywanie.ilosc_punkty_vitalne[0]>=30) {UI.przechowywanie.label_punkty_vitalne[0].setForeground(Color.yellow);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[0]<30) {UI.przechowywanie.label_punkty_vitalne[0].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
                             label_punkty_vitalne[0].setText(String.valueOf(ilosc_punkty_vitalne[0] + "%"));
                         }
                         break;
@@ -132,6 +141,9 @@ public class PrzechowywanieZmiennych {
                             }
                             ilosc_kredytow-=3;
                             label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            if (UI.przechowywanie.ilosc_punkty_vitalne[2]>=70) {UI.przechowywanie.label_punkty_vitalne[2].setForeground(Color.green);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[2]<70&UI.przechowywanie.ilosc_punkty_vitalne[2]>=30) {UI.przechowywanie.label_punkty_vitalne[2].setForeground(Color.yellow);}
+                            else if (UI.przechowywanie.ilosc_punkty_vitalne[2]<30) {UI.przechowywanie.label_punkty_vitalne[2].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
                             label_punkty_vitalne[2].setText(String.valueOf(ilosc_punkty_vitalne[2] + "%"));
                         }
                         break;

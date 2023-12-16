@@ -1,4 +1,5 @@
 package Main;
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,7 +12,7 @@ public class TimerKlasa {
     }
 
     public void startTimer() {
-        long delay = 5 * 1000; //5 sekund (120 000 milisekund)
+        long delay = 1 * 1000; //5 sekund (120 000 milisekund)
 
         TimerTask task = new TimerTask() {
             @Override
@@ -28,6 +29,9 @@ public class TimerKlasa {
         for (int i=0; i<4;i++) {
             UI.przechowywanie.ilosc_punkty_vitalne[i] = UI.przechowywanie.ilosc_punkty_vitalne[i] - 1;
             UI.przechowywanie.label_punkty_vitalne[i].setText(String.valueOf(UI.przechowywanie.ilosc_punkty_vitalne[i]+"%"));
+            if (UI.przechowywanie.ilosc_punkty_vitalne[i]>=70) {UI.przechowywanie.label_punkty_vitalne[i].setForeground(Color.green);}
+            else if (UI.przechowywanie.ilosc_punkty_vitalne[i]<70&UI.przechowywanie.ilosc_punkty_vitalne[i]>=30) {UI.przechowywanie.label_punkty_vitalne[i].setForeground(Color.yellow);}
+            else if (UI.przechowywanie.ilosc_punkty_vitalne[i]<30) {UI.przechowywanie.label_punkty_vitalne[i].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
         }
     }
 

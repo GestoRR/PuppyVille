@@ -1,14 +1,11 @@
 package Main;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class UI {
@@ -81,10 +78,10 @@ public class UI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (NumerTla){
-                    case 1 -> {przechowywanie.obslugaInterakcj(1);}
-                    case 2 -> {przechowywanie.obslugaInterakcj(2);}
-                    case 3 -> {przechowywanie.obslugaInterakcj(3);}
-                    case 4 -> {przechowywanie.obslugaInterakcj(4);}
+                    case 1 -> {przechowywanie.obslugaInterakcji(1);}
+                    case 2 -> {przechowywanie.obslugaInterakcji(2);}
+                    case 3 -> {przechowywanie.obslugaInterakcji(3);}
+                    case 4 -> {przechowywanie.obslugaInterakcji(4);}
                 }
             }
         });

@@ -77,29 +77,72 @@ public class PrzechowywanieZmiennych {
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                switch (numerTla){
-                    case 1 -> {
-                        if (ilosc_kredytow < 1) {
-                            if (ilosc_punkty_vitalne[0]<70) {
-                                ilosc_punkty_vitalne[0] += 30;
+                switch (numerTla) {
+                    case 1:
+                        if (ilosc_kredytow < 3) {
+                            JOptionPane.showMessageDialog(null, "Niewystarczająca ilość kredytów!", "Błąd", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            if (ilosc_punkty_vitalne[1] < 70) {
+                                ilosc_punkty_vitalne[1] += 30;
+                            } else {
+                                ilosc_punkty_vitalne[1] = 100;
                             }
-                            else
-                            {
+                            ilosc_kredytow-=3;
+                            label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            label_punkty_vitalne[1].setText(String.valueOf(ilosc_punkty_vitalne[1] + "%"));
+                        }
+                        break;
+
+                    case 2:
+                        if (ilosc_kredytow < 3) {
+                            JOptionPane.showMessageDialog(null, "Niewystarczająca ilość kredytów!", "Błąd", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            if (ilosc_punkty_vitalne[3] < 70) {
+                                ilosc_punkty_vitalne[3] += 30;
+                            } else {
+                                ilosc_punkty_vitalne[3] = 100;
+                            }
+                            ilosc_kredytow-=3;
+                            label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            label_punkty_vitalne[3].setText(String.valueOf(ilosc_punkty_vitalne[3] + "%"));
+                        }
+                        break;
+                    case 3:
+                        if (ilosc_kredytow < 3) {
+                            JOptionPane.showMessageDialog(null, "Niewystarczająca ilość kredytów!", "Błąd", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            if (ilosc_punkty_vitalne[0] < 70) {
+                                ilosc_punkty_vitalne[0] += 30;
+                            } else {
                                 ilosc_punkty_vitalne[0] = 100;
                             }
-                            label_punkty_vitalne[0].setText(String.valueOf(ilosc_punkty_vitalne[0]+"%"));}
-                        else
-                        {
-                            //label.setText("Niewystarczająca ilość środków do tego zakupu!");
+                            ilosc_kredytow-=3;
+                            label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            label_punkty_vitalne[0].setText(String.valueOf(ilosc_punkty_vitalne[0] + "%"));
                         }
-                    }
-                    case 2 -> {}
-                    case 3 -> {}
-                    case 4 -> {}
+                        break;
+                    case 4:
+                        if (ilosc_kredytow < 3) {
+                            JOptionPane.showMessageDialog(null, "Niewystarczająca ilość kredytów!", "Błąd", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            if (ilosc_punkty_vitalne[2] < 70) {
+                                ilosc_punkty_vitalne[2] += 30;
+                            } else {
+                                ilosc_punkty_vitalne[2] = 100;
+                            }
+                            ilosc_kredytow-=3;
+                            label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
+                            label_punkty_vitalne[2].setText(String.valueOf(ilosc_punkty_vitalne[2] + "%"));
+                        }
+                        break;
+                    //Reszta case'ów jak ogarne pierwszego case (kuchnia)
+
+
                 }
                 interakcja.dispose();
             }
         });
+
 
         anulujButton.addActionListener(new ActionListener() {
             @Override

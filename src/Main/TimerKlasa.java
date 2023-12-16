@@ -38,8 +38,8 @@ public class TimerKlasa {
     private void sprawdzanieRozgrywki(){
         for (int i=0; i<4;i++){
             if (UI.przechowywanie.ilosc_punkty_vitalne[i]==0) {
-                timer.cancel(); // Zatrzymaj timer, gdy wartość punktu vitalnego spadnie do 0
-                wyswietlKomunikatKoncowy(i + 1); // Wyświetl komunikat zależny od numeru punktu vitalnego
+                timer.cancel();
+                wyswietlKomunikatKoncowy(i + 1);
                 break;
             }
         }
@@ -62,10 +62,10 @@ public class TimerKlasa {
                 break;
         }
 
-// Wyświetl okno informacyjne
+        //Wyświetl okno informacyjne
         JOptionPane.showMessageDialog(null, komunikat, "Koniec gry", JOptionPane.INFORMATION_MESSAGE);
 
-        // Dodaj obsługę przycisków "Zagraj ponownie" i "Opuść grę"
+        //Obsługa przycisków "Zagraj ponownie" i "Opuść grę"
         Object[] options = {"Zagraj ponownie", "Opuść grę"};
         int choice = JOptionPane.showOptionDialog(null, "Co chcesz zrobić?", "Wybór", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
@@ -82,7 +82,7 @@ public class TimerKlasa {
             startTimer();
 
         } else if (choice == JOptionPane.NO_OPTION) {
-            System.exit(0); // Zamknij wszystkie okna i zakończ program
+            System.exit(0); //Zamknij wszystkie okna i zakończ program
         }
     }
 

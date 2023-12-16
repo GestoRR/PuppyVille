@@ -11,7 +11,7 @@ public class PrzechowywanieZmiennych {
     public int ilosc_kredytow;
     public JLabel label_ilosc_kredytow;
     public List<JLabel> label_ikony = new ArrayList<>();
-    public String imie = "Kokosik";
+    public String imie;
     public JPanel[] panel_tlo = new JPanel[10];
     public JLabel[] label_tlo = new JLabel[10];
     public JLabel[] label_punkty_vitalne = new JLabel[4];
@@ -41,7 +41,7 @@ public class PrzechowywanieZmiennych {
         JFrame interakcja = new JFrame();
         interakcja.setResizable(false);
         String string1 = null;
-        // Tworzenie tekstu na środku
+        //Tworzenie tekstu na środku
         switch (numerTla) {
             case 1 -> {
                 string1 = "głodu";
@@ -65,15 +65,13 @@ public class PrzechowywanieZmiennych {
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
 
-        // Dodawanie tekstu do panelu
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(label, BorderLayout.CENTER);
 
-        // Tworzenie przycisków "Ok" i "Anuluj"
         JButton okButton = new JButton("Ok");
         JButton anulujButton = new JButton("Anuluj");
 
-        // Dodawanie obsługi zdarzeń dla przycisków
+        //Dodawanie obsługi zdarzeń dla przycisków
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -147,9 +145,6 @@ public class PrzechowywanieZmiennych {
                             label_punkty_vitalne[2].setText(String.valueOf(ilosc_punkty_vitalne[2] + "%"));
                         }
                         break;
-                    //Reszta case'ów jak ogarne pierwszego case (kuchnia)
-
-
                 }
                 interakcja.dispose();
             }
@@ -159,20 +154,17 @@ public class PrzechowywanieZmiennych {
         anulujButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interakcja.dispose(); // zamknij okno po naciśnięciu "Anuluj"
+                interakcja.dispose();
             }
         });
 
-        // Dodawanie przycisków do panelu
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(okButton);
         buttonPanel.add(anulujButton);
 
-        // Dodawanie panelu z tekstem i panelu z przyciskami do głównego panelu
         interakcja.add(panel, BorderLayout.CENTER);
         interakcja.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Ustawienia okna
         interakcja.setSize(400, 200);
         interakcja.setLocationRelativeTo(null);
         interakcja.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

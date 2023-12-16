@@ -23,7 +23,7 @@ public class UI {
         this.man = man;
         TworzenieOkna();
         okno.setVisible(true);
-        //wpisz_imie();
+        wpisz_imie();
         generuj_obraz();
         timer.startTimer();
         menu.Menu();
@@ -66,22 +66,22 @@ public class UI {
 
     public void wstaw_przycisk(int NumerTla, int x, int y, int szer, int wys){
         if (NumerTla == 0 ){
-            if (poprzednie_polozenie.equals("kuchnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
-            if (poprzednie_polozenie.equals("dwor")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
-            if (poprzednie_polozenie.equals("lazienka")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
-            if (poprzednie_polozenie.equals("sypialnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
+            if (poprzednie_polozenie.equals("kuchnia")){przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
+            if (poprzednie_polozenie.equals("dwor")){przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
+            if (poprzednie_polozenie.equals("lazienka")){przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
+            if (poprzednie_polozenie.equals("sypialnia")){przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
             return;
         }
         przechowywanie.przycisk_interakcje[NumerTla] = new JButton();
         JButton przyc =  przechowywanie.przycisk_interakcje[NumerTla];
         JPanel tlo = przechowywanie.panel_tlo[NumerTla];
-        if (poprzednie_polozenie.equals("kuchnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
-        if (poprzednie_polozenie.equals("dwor")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
-        if (poprzednie_polozenie.equals("lazienka")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
-        if (poprzednie_polozenie.equals("sypialnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
+        if (poprzednie_polozenie.equals("kuchnia")){przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
+        if (poprzednie_polozenie.equals("dwor")){przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
+        if (poprzednie_polozenie.equals("lazienka")){przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
+        if (poprzednie_polozenie.equals("sypialnia")){przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
         przyc.setBounds(x,y,szer,wys);
         tlo.add(przyc);
-        przyc.setOpaque(false); //Przycisk jest przezroczysty
+        przyc.setOpaque(false);
         przyc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

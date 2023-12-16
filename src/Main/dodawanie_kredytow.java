@@ -12,7 +12,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class dodawanie_kredytow {
     private JLabel label_dodawanie_kredytow;
-    //private PrzechowywanieZmiennych przechowywanie = new PrzechowywanieZmiennych();
 
     public dodawanie_kredytow(JLabel label_dodawanie_kredytow) {
         this.label_dodawanie_kredytow = label_dodawanie_kredytow;

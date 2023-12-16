@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrzechowywanieZmiennych {
-    public int ilosc_kredytow=999;
+    public int ilosc_kredytow;
     public JLabel label_ilosc_kredytow;
     public List<JLabel> label_ikony = new ArrayList<>();
     public String imie = "Kokosik";

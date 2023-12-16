@@ -12,12 +12,12 @@ public class TimerKlasa {
     }
 
     public void startTimer() {
-        long delay = 200; //5 sekund (120 000 milisekund)
+        long delay = 1000; //1 sekunda (1 000 milisekund)
 
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                zadanieTimera(); //Metoda wykona się po 5 sekundach (odjecie punktow vitalnych)
+                zadanieTimera(); //Metoda wykona się po 1 sekundzie (odjecie punktow vitalnych)
                 sprawdzanieRozgrywki(); //Sprawdzam czy punkty vitalne nie spadna ponizej 0, a jesli spadna to robie obsługe
             }
         };
@@ -37,7 +37,7 @@ public class TimerKlasa {
     }
     private void sprawdzanieRozgrywki(){
         for (int i=0; i<4;i++){
-            if (UI.przechowywanie.ilosc_punkty_vitalne[i]==65) {
+            if (UI.przechowywanie.ilosc_punkty_vitalne[i]==0) {
                 timer.cancel(); // Zatrzymaj timer, gdy wartość punktu vitalnego spadnie do 0
                 wyswietlKomunikatKoncowy(i + 1); // Wyświetl komunikat zależny od numeru punktu vitalnego
                 break;
@@ -49,16 +49,16 @@ public class TimerKlasa {
         String komunikat = "";
         switch (numerPunktu) {
             case 1:
-                komunikat = "Koniec gry. Punkt vitalny 1 spadł do 0.";
+                komunikat = "Czystość to klucz do zdrowego pieska! Zapewnij mu regularne kąpiele i dbaj o higienę.";
                 break;
             case 2:
-                komunikat = "Koniec gry. Punkt vitalny 2 spadł do 0.";
+                komunikat = "Pamietaj o regularnym karmieniu swojego pieska! Zaniedbanie posiłków może prowadzić do utraty punktów. Zadbaj o zdrową dietę, a twój pupilek będzie pełen energii!";
                 break;
             case 3:
-                komunikat = "Koniec gry. Punkt vitalny 3 spadł do 0.";
+                komunikat = "Zadbaj o zdrowy sen swojego pieska! Brak odpowiedniej ilości snu może wpływać na jego samopoczucie. Upewnij się, że ma wygodne miejsce do spania.";
                 break;
             case 4:
-                komunikat = "Koniec gry. Punkt vitalny 4 spadł do 0.";
+                komunikat = "Pamiętaj, że twój piesek potrzebuje twojej uwagi! Zabawa i pieszczoty są kluczowe dla jego dobrego samopoczucia. Następnym razem poświęć mu trochę czasu i zbuduj silną więź!";
                 break;
         }
 

@@ -65,13 +65,20 @@ public class UI {
 
 
     public void wstaw_przycisk(int NumerTla, int x, int y, int szer, int wys){
+        if (NumerTla == 0 ){
+            if (poprzednie_polozenie.equals("kuchnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
+            if (poprzednie_polozenie.equals("dwor")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
+            if (poprzednie_polozenie.equals("lazienka")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
+            if (poprzednie_polozenie.equals("sypialnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
+            return;
+        }
         przechowywanie.przycisk_interakcje[NumerTla] = new JButton();
         JButton przyc =  przechowywanie.przycisk_interakcje[NumerTla];
         JPanel tlo = przechowywanie.panel_tlo[NumerTla];
-        if (poprzednie_polozenie.equals("kuchnia")){przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
-        if (poprzednie_polozenie.equals("dwor")){przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
-        if (poprzednie_polozenie.equals("lazienka")){przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
-        if (poprzednie_polozenie.equals("sypialnia")){przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
+        if (poprzednie_polozenie.equals("kuchnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
+        if (poprzednie_polozenie.equals("dwor")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[2].remove(przechowywanie.przycisk_interakcje[2]);}
+        if (poprzednie_polozenie.equals("lazienka")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[3].remove(przechowywanie.przycisk_interakcje[3]);}
+        if (poprzednie_polozenie.equals("sypialnia")){System.out.println(poprzednie_polozenie);przechowywanie.panel_tlo[4].remove(przechowywanie.przycisk_interakcje[4]);}
         przyc.setBounds(x,y,szer,wys);
         tlo.add(przyc);
         przyc.setOpaque(false); //Przycisk jest przezroczysty
@@ -213,25 +220,21 @@ public class UI {
         {
             switch (NazwaZdjecia) {
                 case "kuchnia_ikona.png" -> {
-                    System.out.println("Salon, ikona:Kuchnia");
                     poprzednie_polozenie = "salon";
                     obecne_polozenie = "kuchnia";
                     kuchnia();
                 }
                 case "sypialnia_ikona.png" -> {
-                    System.out.println("Salon, ikona:sypialnia");
                     poprzednie_polozenie = "salon";
                     obecne_polozenie = "sypialnia";
                     sypialnia();
                 }
                 case "dwor_ikona.png" -> {
-                    System.out.println("Salon, ikona:dwor");
                     poprzednie_polozenie = "salon";
                     obecne_polozenie = "dwor";
                     dwor();
                 }
                 case "lazienka_ikona.png" -> {
-                    System.out.println("Salon, ikona:lazienka");
                     poprzednie_polozenie = "salon";
                     obecne_polozenie = "lazienka";
                     lazienka();
@@ -242,25 +245,21 @@ public class UI {
         {
             switch (NazwaZdjecia) {
                 case "salon_ikona.png" -> {
-                    System.out.println("Kuchnia, ikona:salon");
                     poprzednie_polozenie = "kuchnia";
                     obecne_polozenie = "salon";
                     salon();
                 }
                 case "sypialnia_ikona.png" -> {
-                    System.out.println("Kuchnia, ikona:sypialnia");
                     poprzednie_polozenie = "kuchnia";
                     obecne_polozenie = "sypialnia";
                     sypialnia();
                 }
                 case "dwor_ikona.png" -> {
-                    System.out.println("Kuchnia, ikona:dwor");
                     poprzednie_polozenie = "kuchnia";
                     obecne_polozenie = "dwor";
                     dwor();
                 }
                 case "lazienka_ikona.png" -> {
-                    System.out.println("Kuchnia, ikona:lazienka");
                     poprzednie_polozenie = "kuchnia";
                     obecne_polozenie = "lazienka";
                     lazienka();
@@ -271,25 +270,21 @@ public class UI {
         {
             switch (NazwaZdjecia) {
                 case "salon_ikona.png" -> {
-                    System.out.println("Dwor, ikona:salon");
                     poprzednie_polozenie = "dwor";
                     obecne_polozenie = "salon";
                     salon();
                 }
                 case "sypialnia_ikona.png" -> {
-                    System.out.println("Dwor, ikona:sypialnia");
                     poprzednie_polozenie = "dwor";
                     obecne_polozenie = "sypialnia";
                     sypialnia();
                 }
                 case "kuchnia_ikona.png" -> {
-                    System.out.println("Dwor, ikona:kuchnia");
                     poprzednie_polozenie = "dwor";
                     obecne_polozenie = "kuchnia";
                     kuchnia();
                 }
                 case "lazienka_ikona.png" -> {
-                    System.out.println("Dwor, ikona:lazienka");
                     poprzednie_polozenie = "dwor";
                     obecne_polozenie = "lazienka";
                     lazienka();
@@ -300,25 +295,21 @@ public class UI {
         {
             switch (NazwaZdjecia) {
                 case "salon_ikona.png" -> {
-                    System.out.println("Lazienka, ikona:salon");
                     poprzednie_polozenie = "lazienka";
                     obecne_polozenie = "salon";
                     salon();
                 }
                 case "sypialnia_ikona.png" -> {
-                    System.out.println("Lazienka, ikona:sypialnia");
                     poprzednie_polozenie = "lazienka";
                     obecne_polozenie = "sypialnia";
                     sypialnia();
                 }
                 case "kuchnia_ikona.png" -> {
-                    System.out.println("Lazienka, ikona:kuchnia");
                     poprzednie_polozenie = "lazienka";
                     obecne_polozenie = "kuchnia";
                     kuchnia();
                 }
                 case "dwor_ikona.png" -> {
-                    System.out.println("Lazienka, ikona:dwor");
                     poprzednie_polozenie = "lazienka";
                     obecne_polozenie = "dwor";
                     dwor();
@@ -329,25 +320,21 @@ public class UI {
         {
             switch (NazwaZdjecia) {
                 case "salon_ikona.png" -> {
-                    System.out.println("Sypialnia, ikona:salon");
                     poprzednie_polozenie = "sypialnia";
                     obecne_polozenie = "salon";
                     salon();
                 }
                 case "lazienka_ikona.png" -> {
-                    System.out.println("Sypialnia, ikona:lazienka");
                     poprzednie_polozenie = "sypialnia";
                     obecne_polozenie = "lazienka";
                     lazienka();
                 }
                 case "kuchnia_ikona.png" -> {
-                    System.out.println("Sypialnia, ikona:kuchnia");
                     poprzednie_polozenie = "sypialnia";
                     obecne_polozenie = "kuchnia";
                     kuchnia();
                 }
                 case "dwor_ikona.png" -> {
-                    System.out.println("sypialnia, ikona:dwor");
                     poprzednie_polozenie = "sypialnia";
                     obecne_polozenie = "dwor";
                     dwor();
@@ -363,6 +350,7 @@ public class UI {
         wstaw_objekt(0,"kuchnia_ikona.png",149,648,70,70, Boolean.TRUE);
         wstaw_objekt(0,"lazienka_ikona.png",587,648,70,70, Boolean.TRUE);
         wstaw_objekt(0,"sypialnia_ikona.png",368,648,70,70, Boolean.TRUE);
+        wstaw_przycisk(0,1,1,1,1);
     }
 
     public void kuchnia(){

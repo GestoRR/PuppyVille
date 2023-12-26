@@ -8,6 +8,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Objects;
 
+/**
+ * Służy do tworzenia okna gry i całej otoczki graficznej. Ponadto zaimplementowane jest tutaj przechodzenie między scenami.
+ */
 public class UI {
     Manager man;
     JFrame okno;
@@ -29,6 +32,9 @@ public class UI {
         menu.Menu();
     }
 
+    /**
+     * Służy do stworzenia głównego okna gry
+     */
     public void TworzenieOkna(){
         okno = new JFrame();
         okno.setSize(1024,768);
@@ -39,6 +45,11 @@ public class UI {
         okno.setTitle("PuppyVille: Psia Ferajna");
         okno.setLocationRelativeTo(null);
     }
+
+    /**
+     * Służy do wyświetlenia okna, które będzie nas prosiło o wpisanie imienia dla naszego głównego bohatera.
+     * @return Wpisane imie do obiektu "przechowywanie"
+     */
     public String wpisz_imie() {
         JPanel panel = new JPanel();
         JLabel komunikat = new JLabel("Wpisz imię dla pupila: ");
@@ -64,6 +75,14 @@ public class UI {
     }
 
 
+    /**
+     * Służy do usunięcia przycisku, który został wstawiony przy przejściu do innej sceny. Są to przyciski odpowiedzialne za interakcje (np. lodówka w kuchni służy do doładowania głodu), a robimy to w celu uniknięcia sytuacji, gdzie można użyć np. lodówki w sypialni. Następnie tworzymy JButton o podanych parametrach i dodajemy go do obiektu "przechowywanie" i dodajemy na niego actionlistener
+     * @param NumerTla Unikatowy numer dla każdego tła, do którego dodamy przycisk
+     * @param x położenie poziome przycisku
+     * @param y położenie pionowe przycisku
+     * @param szer szerokość przycisku
+     * @param wys wysokość przycisku
+     */
     public void wstaw_przycisk(int NumerTla, int x, int y, int szer, int wys){
         if (NumerTla == 0 ){
             if (poprzednie_polozenie.equals("kuchnia")){przechowywanie.panel_tlo[1].remove(przechowywanie.przycisk_interakcje[1]);}
@@ -95,6 +114,12 @@ public class UI {
         });
 
     }
+
+    /**
+     * Służy do wstawienia zdjęcia dla danego panelu z tłem
+     * @param NumerTla Unikatowy numer dla każdego tła
+     * @param NazwaZdjecia Nazwa pliku ze zdjęciem w katalogu res
+     */
     public void wstaw_tlo(int NumerTla, String NazwaZdjecia){
         //Panel z tlem na cala strone
         przechowywanie.panel_tlo[NumerTla] = new JPanel();
@@ -116,6 +141,16 @@ public class UI {
 
     }
 
+    /**
+     * Służy do ułatwienia wstawiania obiektów na dane tło po podaniu podstawowych parametrów
+     * @param NumerTla Unikatowy numer dla każdego tła (np. salon=0, kuchnia=1)
+     * @param NazwaZdjecia Nazwa pliku ze zdjęciem w katalogu res
+     * @param x Położenie na osi poziomej
+     * @param y Położenie na osi pionowej
+     * @param szer Szerokość obiektu (zdjęcia)
+     * @param wys Wysokość obiektu (zdjęcia)
+     * @param ikona Czy jest to ikona czy nie. Jeśli jest to nakładamy na niego actionlistener czy nie został kliknięty w celu przejścia do kolejnej sceny.
+     */
     public void wstaw_objekt(int NumerTla, String NazwaZdjecia, int x, int y, int szer, int wys, Boolean ikona){
         JLabel label_objekt = new JLabel();
         label_objekt.setBounds(x,y,szer,wys);
@@ -132,13 +167,17 @@ public class UI {
             label_objekt.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    przechodzenie(NumerTla,NazwaZdjecia,label_objekt);
+                    przechodzenie(NumerTla,NazwaZdjecia);
                 }
             });
         }
 
     }
 
+    /**
+     * Służy do wstawiania obiektów, które są zawsze w tym samym miejscu niezależnie od tła, takie jak: JLabel z imieniem, ikony punktów vitalnych itp.
+     * @param NumerTla Unikatowy numer dla każdego tła (np. salon=0, kuchnia=1)
+     */
     public void stale_obiekty(int NumerTla){
         //Wstawiam na stałe JLabel z imieniem na każdym tle jaki wystąpi
         JPanel panel_imie = new JPanel();
@@ -208,7 +247,12 @@ public class UI {
         dodawanie_kredytow dodawanieKredytow = new dodawanie_kredytow(label_dodawanie_kredytow);
     }
 
-    public void przechodzenie(int NumerTla, String NazwaZdjecia, JLabel label_objekt){
+    /**
+     * Obsługa zmian sceny przy przejściu do innych pomieszczeń
+     * @param NumerTla Unikatowy numer dla każdego tła (np. salon=0, kuchnia=1)
+     * @param NazwaZdjecia Nazwa pliku ze zdjęciem w katalogu res
+     */
+    public void przechodzenie(int NumerTla, String NazwaZdjecia){
 
         for (int i = 0 ; i<przechowywanie.label_ikony.size();i++)
         {
@@ -343,6 +387,9 @@ public class UI {
         }
     }
 
+    /**
+     * Służy do stworzenia sceny z salonem
+     */
     public void salon(){
         wstaw_tlo(0,"salon.jpg");
         wstaw_objekt(0,"bohater.png", 340, 320, 200,190, Boolean.FALSE);
@@ -353,6 +400,9 @@ public class UI {
         wstaw_przycisk(0,1,1,1,1);
     }
 
+    /**
+     * Służy do stworzenia sceny z kuchnią
+     */
     public void kuchnia(){
         wstaw_tlo(1,"kuchnia.png");
         wstaw_objekt(1,"bohater.png", 300, 450, 200,190, Boolean.FALSE);
@@ -368,6 +418,9 @@ public class UI {
 
     }
 
+    /**
+     * Służy do stworzenia sceny z dworem
+     */
     public void dwor(){
         wstaw_tlo(2,"dwor.png");
         wstaw_objekt(2,"bohater.png", 400, 530, 200,190, Boolean.FALSE);
@@ -383,6 +436,9 @@ public class UI {
         }
     }
 
+    /**
+     * Służy do stworzenia sceny z łazienką
+     */
     public void lazienka(){
         wstaw_tlo(3,"lazienka.png");
         wstaw_objekt(3,"bohater.png", 500, 470, 200,190, Boolean.FALSE);
@@ -398,6 +454,9 @@ public class UI {
         }
     }
 
+    /**
+     * Służy do stworzenia sceny z sypialnią
+     */
     public void sypialnia(){
         wstaw_tlo(4,"sypialnia.png");
         wstaw_objekt(4,"bohater.png", 830, 480, 200,190, Boolean.FALSE);
@@ -411,6 +470,10 @@ public class UI {
             }
         }
     }
+
+    /**
+     * Służy do wyświetlenia pierwszej sceny w konstruktorze. Została stworzona ze względu na możliwość szybkiej zmiany początkowej sceny.
+     */
     public void generuj_obraz(){
         //0 = salon, 1 = kuchnia, 2 = dwor, 3 = lazienka, 4 = sypialnia
         salon();

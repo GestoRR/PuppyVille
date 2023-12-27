@@ -7,21 +7,64 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Służy jako magazyn dla danych i to właśnie tutaj zachodzą manipulację danych takie jak dodawanie punktów
+ * vitalnych, ich inicjalizacja oraz dodawanie/odejmowanie kredytów po odpowiedzi.
+ */
 public class PrzechowywanieZmiennych {
+    /**
+     * Przechowuje aktualną wartość kredytów użytkownika.
+     */
     public int ilosc_kredytow;
+    /**
+     * Label na którym wyświetlana jest aktualna ilość kredytów. Używamy go dlatego, aby
+     * można było aktualizować ilość kredytów bez zmiany sceny tylko po użyciu metody settext().
+     */
     public JLabel label_ilosc_kredytow;
+    /**
+     * Lista labelów na ikony, które służą do przechodzenia między scenami. Stworzone w celu łatwiejszego
+     * odwoływania się do danego labela.
+     */
     public List<JLabel> label_ikony = new ArrayList<>();
+    /**
+     * Wartość imienia wpisanego przez użytkownika.
+     */
     public String imie;
+    /**
+     * Tablica paneli dla tła scen. Numeracja zgodna z unikatowym NumerTla każdej sceny.
+     */
     public JPanel[] panel_tlo = new JPanel[10];
+    /**
+     * Tablica labeli dla tła scen. Numeracja zgodna z unikatowym NumerTla każdej sceny.
+     */
     public JLabel[] label_tlo = new JLabel[10];
+    /**
+     * Tablica labeli dla wyświetlania ilości punktów vitalnych.
+     */
     public JLabel[] label_punkty_vitalne = new JLabel[4];
+    /**
+     * Tablica intów służąca do zapisywania aktualnej wartości wszystkich punktów vitalnych.
+     */
     public int[] ilosc_punkty_vitalne = new int[4];
+    /**
+     * Tablica JButtonów, którą wykorzystujemy w celu tworzenia przycisków do interakcji.
+     */
     public JButton[] przycisk_interakcje = new JButton[5];
 
+    /**
+     * Ma za zadanie wywołać metodę inicjalizujPunktyVitalne() w celu przypisania wartości początkowej
+     * dla wszystkich punktów vitalnych.
+     */
     public PrzechowywanieZmiennych(){
         inicjalizujPunktyVitalne();
     }
 
+    /**
+     * Służy do obsługi dodawania/odejmowania punktów po dobrej/złej odpowiedzi.
+     * Następnie setuje w odpowiednim labelu nową wartość kredytów, aby ją odświeżyć bez zmiany sceny.
+     * @param ilosc Określa ile punktów dodać/odjąć.
+     * @param znak Określa czy punkty będziemy dodawać lub odejmować.
+     */
     public void dodajPunkt(int ilosc, char znak){
         if (znak == '+'){
             ilosc_kredytow = ilosc_kredytow + ilosc;
@@ -31,12 +74,22 @@ public class PrzechowywanieZmiennych {
         label_ilosc_kredytow.setText(String.valueOf(ilosc_kredytow));
     }
 
+    /**
+     * Iteruje po tablicy ilosc_punkty_vitalne i każdemu punktowi przypisuje początkową wartość
+     * 100(%).
+     */
     public void inicjalizujPunktyVitalne() {
         for (int i = 0; i < ilosc_punkty_vitalne.length; i++) {
             ilosc_punkty_vitalne[i] = 100;
         }
     }
 
+    /**
+     * Służy do dodania funkcjonalności stworzonych wcześniej JButtonów, tj. stworzenie okna dialogowego
+     * z zapytaniem czy chcemy kupić daną ilość punktu vitalnego za następującą ilość kredytów.
+     * Następnie sprawdza czy mamy taką ilość kredytów i obsługuje nasze zapytanie.
+     * @param numerTla Unikatowy numer dla każdego tła, do którego dodamy przycisk
+     */
     public void obslugaInterakcji(int numerTla){
         JFrame interakcja = new JFrame();
         interakcja.setResizable(false);

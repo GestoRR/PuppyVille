@@ -13,6 +13,9 @@ import java.util.Objects;
  */
 public class UI {
     Manager man;
+    /**
+     * Główne okno programu
+     */
     JFrame okno;
     /**
      * Obiekt klasy PrzechowywanieZmiennych służący do przechowywania danych używanych w czasie działania programu

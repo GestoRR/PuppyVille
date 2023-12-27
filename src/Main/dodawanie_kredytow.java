@@ -10,9 +10,25 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Służy do stworzenia i obsługi menu z zadaniami edukacyjnymi za które gracz otrzymuje punktu
+ * w celu zakupienia punktów vitalnych. Są trzy kategorie: matematyka, tłumaczenie oraz zagadki, które
+ * dzielą się na poziomy trudności: łatwy oraz ciężki.
+ */
 public class dodawanie_kredytow {
+    /**
+     * Służy jako label, który za zadanie ma rozwijanie menu z zadaniami dla użytkownika.
+     * W konstruktorze nadajemy na niego actionlistenera, a jest inicjalizowany w klasie UI w metodzie
+     * stałe obiekty.
+     */
     private JLabel label_dodawanie_kredytow;
 
+    /**
+     * Służy do ustawiania obsługi zdarzeń myszy dla obiektu label_dodawanie_kredytow.
+     * Po naciśnięciu lewego przycisku myszy wywołuje metodę wyswietlPopupMenu, która wyświetla
+     * dla użytkownika rozwijaną listę z opcjami do wyboru.
+     * @param label_dodawanie_kredytow
+     */
     public dodawanie_kredytow(JLabel label_dodawanie_kredytow) {
         this.label_dodawanie_kredytow = label_dodawanie_kredytow;
         label_dodawanie_kredytow.addMouseListener(new MouseAdapter() {
@@ -25,6 +41,12 @@ public class dodawanie_kredytow {
         });
     }
 
+    /**
+     * Służy do wyświetlania menu kategorii po naciśnięciu w przycisk wraz z obsługą zdarzeń po
+     * kliknęciu w katergorię.
+     * @param x aktualne położenie myszy na osi poziomej
+     * @param y aktualne położenie myszy na osi pionowej
+     */
     private void wyswietlPopupMenu(int x, int y) {
         JPopupMenu popupMenu = new JPopupMenu();
 
@@ -62,6 +84,10 @@ public class dodawanie_kredytow {
         popupMenu.show(label_dodawanie_kredytow, x, y);
     }
 
+    /**
+     * Służy do obsługi poziomu trudności dla każdej kategorii.
+     * @param kategoria String z nazwą kategorii, którą kliknęliśmy
+     */
     private void PoziomTrudnosciMenu(String kategoria) {
         JPopupMenu PoziomTrudnosciMenu = new JPopupMenu();
 
@@ -211,6 +237,10 @@ public class dodawanie_kredytow {
         PoziomTrudnosciMenu.show(label_dodawanie_kredytow, 0, label_dodawanie_kredytow.getHeight());
     }
 
+    /**
+     * Obsługa tłumaczenia na poziomie łatwym (z angielskiego na polski)
+     * @return Zwraca słowo do tłumaczenia i poprawną odpowiedź w formie tablicy
+     */
     private String[] TlumaczenieLatwe() {
         //Tworzymy słownik w postaci hashmapy
         Map<String, String> slownik = new HashMap<>();
@@ -248,6 +278,10 @@ public class dodawanie_kredytow {
 
     }
 
+    /**
+     * Obsługa zagadek na poziomie łatwym (po polsku)
+     * @return Zwraca zagadkę do wyświetlenia i poprawną odpowiedź
+     */
     private String[] ZagadkiLatwe() {
         //Tworzymy zagadki i odpowiedzi w postaci hashmapy
         Map<String, String> zagadki = new HashMap<>();
@@ -270,6 +304,11 @@ public class dodawanie_kredytow {
 
     }
 
+    /**
+     * Wybiera trzy liczby i dwa znaki z czego unikamy, aby były trzy mnożenia.
+     * Mnożenie tylko występuję dla liczb do 9.
+     * @return Zwraca trzy liczby do wyświetlenia, znaki pomiędzy nimi oraz poprawną odpowiedź.
+     */
     private int[] MatmaTrudne(){
         //Losujemy dwa znaki spośród (+, -, *)
         char znak1;
@@ -344,6 +383,10 @@ public class dodawanie_kredytow {
         return new int[]{a,b,c, znak1, znak2,odp};
     }
 
+    /**
+     * Obsługa tłumaczenia na poziomie trudnym (z pol na ang).
+     * @return Zwraca słowo do tłumaczenia i poprawną odpowiedź w formie tablicy
+     */
     private String[] TlumaczenieTrudne() {
         //Tworzymy słownik w postaci hashmapy
         Map<String, String> slownik = new HashMap<>();
@@ -378,6 +421,10 @@ public class dodawanie_kredytow {
 
     }
 
+    /**
+     * Obsługa zagadek na poziomie trudnym (po angielsku)
+     * @return Zwraca zagadkę do wyświetlenia i poprawną odpowiedź
+     */
     private String[] ZagadkiTrudne() {
         //Tworzymy zagadki i odpowiedzi w postaci hashmapy
         Map<String, String> zagadki = new HashMap<>();

@@ -14,14 +14,33 @@ import java.util.Objects;
 public class UI {
     Manager man;
     JFrame okno;
+    /**
+     * Obiekt klasy PrzechowywanieZmiennych służący do przechowywania danych używanych w czasie działania programu
+     */
     public static PrzechowywanieZmiennych przechowywanie = new PrzechowywanieZmiennych();
+    /**
+     * Obiekt klasy menu, na którym wywołujemy metodę menu() służącą do nasłuchiwania klawisza "esc" i wyświetlania graficznego menu
+     */
     public Menu menu = new Menu();
+    /**
+     * Obiekt klasy timer, który ma za zadanie rozpocząć odliczanie timera w celu odejmowania punktów vitalnych
+     */
     public static TimerKlasa timer = new TimerKlasa();
 
-
+    /**
+     * Dana służąca do monitorowania obecnego położenia w celu odpowiedniego wyświetlania interakcji
+     */
     public String obecne_polozenie = "salon";
+    /**
+     * Dana służąca do monitorowania poprzedniego położenia w celu modyfikacji i usuwania zbędnych interakcji
+     */
     public String poprzednie_polozenie = "salon";
 
+    /**
+     *  Wywołuje podstawowe metody takie jak stworzenie głównego okna, metoda wpisania imienia (chcemy, aby tylko raz się pojawiła) i pierwszą scenę gry.
+     *  Pondato rozpoczynamy timer, który odejmuje punkty vitalne oraz aktywujemy menu pod przyciskiem esc.
+     * @param man Obiekt klasy Manager
+     */
     public UI(Manager man){
         this.man = man;
         TworzenieOkna();

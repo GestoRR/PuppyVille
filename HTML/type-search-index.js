@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Main","l":"dodawanie_kredytow"},{"p":"Main","l":"Manager"},{"p":"Main","l":"Menu"},{"p":"Main","l":"PrzechowywanieZmiennych"},{"p":"Main","l":"TimerKlasa"},{"p":"Main","l":"UI"}];updateSearchResults();

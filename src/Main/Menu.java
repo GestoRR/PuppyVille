@@ -6,12 +6,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+/**
+ * Służy do wyswietlenia i obsługi menu po wciśnięciu przycisku esc.
+ */
 public class Menu {
+    /**
+     * Czcionka uzywana do JButtonów zawierających napis "Zamknij Menu" oraz "Opuść Gre".
+     */
     Font czcionka = new Font("Arial",Font.BOLD,48);
+
+    /**
+     * Służy do inicjalizacji ActionListenera na przycisk esc
+     */
     public void Menu() {
         dodajListeneraNaEsc();
     }
 
+    /**
+     * Służy do wyświetlenia okna po naciśnięciu esc, zawierającego dwa JButtony: zamknij menu oraz opuść gre.
+     * Następnie nakładane są ActionListenery na te JButtony w celu obsługi zdarzeń użytkownika.
+     */
     private void dodajListeneraNaEsc() {
         ActionListener escapeListener = new ActionListener() {
             @Override

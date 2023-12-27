@@ -4,13 +4,27 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * Służy do obsługi timera w celu odejmowania po jednym % każdego punktu vitalnego
+ * co sekundę.
+ */
 public class TimerKlasa {
+    /**
+     * Nasz timer
+     */
     private Timer timer;
+
+    /**
+     * Inicjalizuje timer
+     */
     public TimerKlasa() {
         this.timer = new Timer();
     }
 
+    /**
+     * Rozpoczyna pracę timera z podanymi przez nas parametrami. Ponadto sprawdza nam czy punkty vitalne
+     * nie osiągnęły wartości zera procent.
+     */
     public void startTimer() {
         long delay = 1000; //1 sekunda (1 000 milisekund)
 
@@ -26,6 +40,9 @@ public class TimerKlasa {
         timer.scheduleAtFixedRate(task, delay , delay);
     }
 
+    /**
+     * Służy do ustawiania kolorów czcionki dla punktów vitalnych gdy spadną poniżej pewnych poziomów.
+     */
     private static void zadanieTimera() {
         for (int i=0; i<4;i++) {
             UI.przechowywanie.ilosc_punkty_vitalne[i] = UI.przechowywanie.ilosc_punkty_vitalne[i] - 1;
@@ -35,6 +52,10 @@ public class TimerKlasa {
             else if (UI.przechowywanie.ilosc_punkty_vitalne[i]<30) {UI.przechowywanie.label_punkty_vitalne[i].setForeground(Color.getHSBColor(0,0.9f,0.7f));}
         }
     }
+
+    /**
+     * Sprawdza czy jakikolwiek punkt vitalny jest równy zero. Jeśli jest to wyświetla komunikat końcowy.
+     */
     private void sprawdzanieRozgrywki(){
         for (int i=0; i<4;i++){
             if (UI.przechowywanie.ilosc_punkty_vitalne[i]==0) {
@@ -45,6 +66,11 @@ public class TimerKlasa {
         }
     }
 
+    /**
+     * Służy do wyświetlania pouczającego komunikatu końcowego, gdy dojdzie do końca rozgrywki. Ponadto
+     * występuje tutaj obsługa ponownej gry lub opuszczenia całkowicie rozgrywki.
+     * @param numerPunktu Który punkt vitalny jest równy 0. Jest to istotne w celu dobrania odpowiedniego komunikatu końcowego.
+     */
     private void wyswietlKomunikatKoncowy(int numerPunktu) {
         String komunikat = "";
         switch (numerPunktu) {

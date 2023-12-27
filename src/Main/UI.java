@@ -26,7 +26,7 @@ public class UI {
      */
     public Menu menu = new Menu();
     /**
-     * Obiekt klasy timer, który ma za zadanie rozpocząć odliczanie timera w celu odejmowania punktów vitalnych
+     * Obiekt klasy TimerKlasa, który ma za zadanie rozpocząć odliczanie timera w celu odejmowania punktów vitalnych
      */
     public static TimerKlasa timer = new TimerKlasa();
 
